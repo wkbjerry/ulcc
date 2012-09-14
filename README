@@ -1,0 +1,53 @@
+ULCC (User-Level Cache Control)
+===============================
+
+ULCC is a C library that allows application programmers to write cache-friendly,
+high-performance programs by explicitly managing and optimizing CPU cache usage
+on multi-cores. If your program suffers from cache conflict problem and you want
+to improve its performance by protecting strong-locality data and/or constraining
+weak-locality data, ULCC is the right tool for you to achieve just the purpose
+without changing the operating system.
+
+
+HISTORY
+-------
+2010-02-13: ulcc 0.1 released under GPL; provided an implementation with rich
+	interfaces.
+2012-09-16: ulcc 0.2 released under BSD license; the interfaces have been
+	greatly simplified, which makes the library more focused, easier-to-use,
+	and easier-to-understand.
+
+
+REQUIREMENT
+-----------
+ULCC runs on Linux. It does not require changing the kernel, but it does have a
+minimum requirement on the version of kernel. Since ULCC relies on the pagemap
+interface to retrieve the physical frame numbers of virtual memory pages in
+user space, the Linux kernel version has to be no older than 2.6.25.
+
+
+COMPILE, INSTALL & USAGE
+------------------------
+Compilation is easy. First cd to src folder, and edit arch.h file to specify the
+last level cache parameters of your CPUs (check /sys/devices/system/cpu to get
+the info of your CPUs). For example, suppose you have a multi-core CPU with an
+8 MiB last level cache whose set associativity is 12, define ULCC_CACHE_KB to
+(8 * 1024) and ULCC_CACHE_ASSOC to (12). ULCC_PAGE_BITS should normally be 12,
+unless the page size on your system is not 4KiB.
+
+Then make.
+
+Copy src/arch.h, src/remapper.h, and src/ulcc.h to the header installation
+folder as of your choice; copy src/libulcc.so to the library installation folder
+as of your choice. Installation completes!
+
+In your source file, include "ulcc.h" only. Then you can access all ULCC
+functions. Before compilation and execution, don't forget to add header and
+library search paths to environment variables.
+
+Refer to test/test.c for examples of using ULCC.
+
+
+DOCUMENTATION
+-------------
+Please refer to doc/ulcc.txt
