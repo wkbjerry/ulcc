@@ -1,5 +1,5 @@
 all:
-	gcc test.c -L../src -Wl,-rpath,../src -lulcc -o test
+	gcc test.c -L../src -Wl,-rpath,../src -lulcc -lpthread -o test
 run:
 	./test
 clean:

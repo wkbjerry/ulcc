@@ -11,8 +11,7 @@ without changing the operating system.
 
 HISTORY
 -------
-2010-02-13: ulcc 0.1 released under GPL; provided an implementation with rich
-	interfaces.
+2010-02-13: ulcc 0.1 released under GPL
 2012-09-16: ulcc 0.2 released under BSD license; the interfaces have been
 	greatly simplified, which makes the library more focused, easier-to-use,
 	and easier-to-understand.

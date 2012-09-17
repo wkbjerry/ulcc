@@ -87,7 +87,7 @@ typedef unsigned long long		cc_uint64_t;
 #endif
 
 /* Library interfaces */
-static inline int cc_nr_cache_colors()
+static inline int cc_nr_colors()
 {
 	return ULCC_NR_CACHE_COLORS;
 }
